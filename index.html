@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" ng-app="countdown" ng-controller="mainCtrl">
+<head>
+	<meta charset="UTF-8">
+	<title>Countdown</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-static-top navbar-inverse">
+		<div class="container">
+			<a href="" class="navbar-brand">
+				Countdown
+			</a>
+			<div class="nav navbar-nav navbar-right">
+				<!-- Button to Add a new event with a plus icon in it and only shows when newEvent is null -->
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<!-- Form with submit event that adds an event and only shows when newEvent is not null -->
+		<form name="newEventForm">
+			<h3>New Event</h3>
+			<!-- Form (in a row) to input event name, date, and a button to save/submit the form -->
+		</form>
+		
+		<h2>Events</h2>
+		<!-- Listing of events, 4 per row. Show event name, time until the event, and an x icon to remove the event -->
+	</div>
+	
+	<!-- All of the JS sources you'll need -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js"></script>
+	<script src="js/lib/moment.js"></script>
+	<script src="js/lib/ui-bootstrap-tpls-0.6.5.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/filters.js"></script>
+</body>
+</html>

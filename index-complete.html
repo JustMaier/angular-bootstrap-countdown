@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="countdown" ng-controller="mainCtrl">
+<head>
+	<meta charset="UTF-8">
+	<title>Countdown</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+</head>
+<body>
+	<nav class="navbar navbar-static-top navbar-inverse">
+		<div class="container">
+			<a href="" class="navbar-brand">
+				Countdown
+			</a>
+			<div class="nav navbar-nav navbar-right">
+				<!-- Button to Add a new event with a plus icon in it -->
+				<button class="btn btn-default navbar-btn" ng-click="toggleAdding()" ng-show="!newEvent">
+					<span class="glyphicon glyphicon-plus"></span>
+					Add Event
+				</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<!-- Form with submit event that adds an event -->
+		<form name="newEventForm" ng-submit="addEvent()" ng-show="newEvent" class="ng-cloak">
+			<h3>New Event</h3>
+			<!-- Form (in a row) to input event name, date, and a button to save/submit the form -->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="field-group">
+						<label class="sr-only">Event Name</label>
+						<input type="text" class="form-control" ng-model="newEvent.name" placeholder="Event Name" required>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="field-group">
+						<label class="sr-only">Event Date</label>
+						<input type="text" datepicker-popup="MMM dd, yyyy" class="form-control" ng-model="newEvent.date" placeholder="Event Date" required>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-block btn-default" ng-class="{'btn-primary':newEventForm.$valid}">Save</button>
+				</div>
+			</div>
+		</form>
+		
+		<h2>Events</h2>
+		<!-- Listing of events, 4 per row. Show event name, time until the event, and an x icon to remove the event -->
+		<div class="row" class="ng-cloak">
+			<div class="col-sm-3" ng-repeat="event in events | orderBy:'date' track by $index">
+				<div class="well">
+					<button class="close" aria-hidden="true" ng-click="removeEvent($index)">&times;</button>
+					<h4>{{event.name}}</h4>
+					<p class="text-muted">{{event.date | fromNow}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js"></script>
+	<script src="js/lib/moment.js"></script>
+	<script src="js/lib/ui-bootstrap-tpls-0.6.5.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/filters.js"></script>
+</body>
+</html>
